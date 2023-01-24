@@ -317,18 +317,24 @@ let arrPersonaggi = [
     this.items = items;
     this.pageSize = pageSize;
   }
-  static counterChamp(items,pageSize){
+  static counterChamp(items,score){
+    
     divDisplay.innerHTML= '';
-
-  for (let i = 0; i < pageSize; i++) {
-    let div = document.createElement('div')
-    div.innerHTML = items[i].name;
-    divDisplay.appendChild(div)
+    for (let i = 0; i < score; i++) {
+      let div = document.createElement('div')
+      div.innerHTML = items[i].name;
+      divDisplay.appendChild(div)
+    if(score > items.length){
+      divDisplay.innerHTML= '';
+      break
+    }
   }
-  
-  
 }
 }
 nextBtn.addEventListener('click', () =>{
   Champions.counterChamp(arrPersonaggi,score += 10)
+  if(score > arrPersonaggi.length){
+    score = 0
+    console.log(score);
+  }
 })
